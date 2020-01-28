@@ -90,7 +90,7 @@ def get_engagement_id(dd, product_id, user_id, engagement_id, engagement_name, b
     engagement_description = "CI/CD Engagement created by ci/cd script"
 
     engagement_id = dd.create_engagement(engagement_name_plus_branch, product_id, str(user_id),
-    "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"), branch_tag=branch_name, description=engagement_description, build_id=build_id, commit_hash=commit_hash)
+    "In Progress", start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"), branch_tag=branch_name, description=engagement_description, build_id=build_id, commit_hash=commit_hash, push_all_issues=True)
     return str(engagement_id.data["id"])
 
 def process_findings(dd, engagement_id, dir, build=None):
@@ -354,6 +354,6 @@ class Main:
 
             #Close the engagement_id
             #dd.close_engagement(engagement_id)
-            summary(dd, engagement_id, test_ids, max_critical, max_high, max_medium)
+            #summary(dd, engagement_id, test_ids, max_critical, max_high, max_medium)
         else:
             print("No file or directory to scan specified.")

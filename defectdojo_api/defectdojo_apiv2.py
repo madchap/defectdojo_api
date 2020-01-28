@@ -127,7 +127,7 @@ class DefectDojoAPIv2(object):
     def create_engagement(self, name, product_id, lead_id, status, target_start, target_end, active='True',
         pen_test='False', check_list='False', threat_model='False', risk_path="",test_strategy="", progress="",
         done_testing='False', engagement_type="CI/CD", build_id=None, commit_hash=None, branch_tag=None, build_server=None,
-        source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None, deduplication_on_engagement=True):
+        source_code_management_server=None, source_code_management_uri=None, orchestration_engine=None, description=None, deduplication_on_engagement=True, push_all_issues=False):
         """Creates an engagement with the given properties.
 
         :param name: Engagement name.
@@ -151,7 +151,8 @@ class DefectDojoAPIv2(object):
         :param source_code_management_server: URL of source code management
         :param source_code_management_uri: Link to source code commit
         :param orchestration_engine: URL of orchestration engine
-        :param deduplication_on_engagement: voolean value for deduplication_on_engagement
+        :param deduplication_on_engagement: boolean value for deduplication_on_engagement
+        :param push_all_issues: boolean value for push_all_issues
 
         """
 
@@ -199,6 +200,9 @@ class DefectDojoAPIv2(object):
 
         if deduplication_on_engagement:
             data.update({'deduplication_on_engagement': deduplication_on_engagement})
+
+        if push_all_issues:
+            data.update({'push_all_issues': push_all_issues})
 
         return self._request('POST', 'engagements/', data=data)
 
