@@ -1108,7 +1108,7 @@ class DefectDojoAPIv2(object):
 
     def list_jira_issues(self, finding_id=None, jira_key=None):
         """
-        Retrives JIRA issues assigned to findings
+        Retrieves JIRA issues assigned to findings
 
         :param finding_id: Search for a specific finding ID
         :param jira_key: Search a specific JIRA key
