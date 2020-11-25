@@ -1116,7 +1116,7 @@ class DefectDojoAPIv2(object):
 
         params = {}
         if finding_id:
-            params['finding_id'] = finding_id
+            params['id'] = finding_id
         
         if jira_key:
             params['jira_key'] = jira_key
